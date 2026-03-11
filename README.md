@@ -1,5 +1,4 @@
 ﻿# compose-mvvm-search-app
-# Compose MVVM Search App
 
 A simple Android application demonstrating modern Android development using **Jetpack Compose**, **MVVM architecture**, and **Navigation Compose**.
 
@@ -65,3 +64,11 @@ UI Recomposition
 ## GitHub Repository
 
 https://github.com/kuttikatt/compose-mvvm-search-app
+
+## Screenshots
+
+### Search Screen
+![Search Screen](screenshots/search_screen.png)
+
+### Details Screen
+![Details Screen](screenshots/details_screen.png)
