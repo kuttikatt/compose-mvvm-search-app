@@ -24,8 +24,7 @@ fun AppNavigation() {
                 backStackEntry.arguments?.getString("description") ?: ""
 
             DetailsScreen(
-                title = title,
-                description = description,
+                title, description,
                 navController = navController
             )
         }

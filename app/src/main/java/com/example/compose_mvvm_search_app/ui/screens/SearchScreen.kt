@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
@@ -21,11 +22,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.compose_mvvm_search_app.ui.component.ArticleCard
+import com.example.compose_mvvm_search_app.viewmodel.SearchViewModel
 
 @Composable
 fun SearchScreen(navController: NavHostController) {
+    val viewModel: SearchViewModel = viewModel()
+    val articles by viewModel.items.collectAsStateWithLifecycle()
     var query by remember { mutableStateOf("") }
     Column(
         verticalArrangement = Arrangement.Top,
@@ -38,17 +44,19 @@ fun SearchScreen(navController: NavHostController) {
             value = query,
             onValueChange = {
                 query = it
+                viewModel.searchQuery(query)
             },
             label = { Text("Search") },
             leadingIcon = {
-                Icon(Icons.Default.Search, contentDescription = "Search")
+                Icon(Icons.Default.Search,
+                    contentDescription = "Search")
             },
             modifier = Modifier.fillMaxWidth(),
             singleLine = true
         )
         Spacer(modifier = Modifier.size(16.dp))
         LazyColumn(modifier = Modifier.fillMaxSize()) {
-            items(6) { article ->
+            items(articles) { article ->
                 ArticleCard(article, navController)
             }
         }
