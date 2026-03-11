@@ -13,12 +13,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
 @Composable
-fun AddCardData(article: Int, navController: NavHostController) {
+fun ArticleCard(article: Int, navController: NavHostController) {
     Card(
         modifier = Modifier
             .padding(8.dp)
@@ -34,19 +35,18 @@ fun AddCardData(article: Int, navController: NavHostController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(16.dp)
-                .fillMaxSize()
         ) {
             Text(
                 "title",
                 fontSize = 16.sp,
                 fontStyle = FontStyle.Normal,
-                style = MaterialTheme.typography.titleMedium
+                style = MaterialTheme.typography.titleMedium, textAlign = TextAlign.Start
             )
             Text(
                 "Description",
                 fontSize = 12.sp,
                 fontStyle = FontStyle.Normal,
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyMedium, textAlign = TextAlign.Start
             )
         }
     }
